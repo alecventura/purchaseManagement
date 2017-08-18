@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3A11883D-E4A4-45CE-BF29-14FD1D98B611}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Valtech.Domain</RootNamespace>
+    <AssemblyName>Valtech.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\AbstractEntity.cs" />
+    <Compile Include="Entities\PurchaseModule\PaymentMethod.cs" />
+    <Compile Include="Entities\PurchaseModule\Product.cs" />
+    <Compile Include="Entities\PurchaseModule\ProductCategory.cs" />
+    <Compile Include="Entities\PurchaseModule\Purchase.cs" />
+    <Compile Include="HelperClasses\ModelPagination.cs" />
+    <Compile Include="Interfaces\Repository\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Repository\PurchaseModule\IPaymentMethodRepository.cs" />
+    <Compile Include="Interfaces\Repository\PurchaseModule\IProductCategoryRepository.cs" />
+    <Compile Include="Interfaces\Repository\PurchaseModule\IProductRepository.cs" />
+    <Compile Include="Interfaces\Repository\PurchaseModule\IPurchaseRepository.cs" />
+    <Compile Include="Interfaces\Services\PurchaseModule\IPaymentMethodService.cs" />
+    <Compile Include="Interfaces\Services\PurchaseModule\IProductCategoryService.cs" />
+    <Compile Include="Interfaces\Services\PurchaseModule\IProductService.cs" />
+    <Compile Include="Interfaces\Services\PurchaseModule\IPurchaseService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Interfaces\Services\IServiceBase.cs" />
+    <Compile Include="Services\PurchaseModule\PaymentMethodService.cs" />
+    <Compile Include="Services\PurchaseModule\ProductCategoryService.cs" />
+    <Compile Include="Services\PurchaseModule\ProductService.cs" />
+    <Compile Include="Services\PurchaseModule\PurchaseService.cs" />
+    <Compile Include="Services\ServiceBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\Administration\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
