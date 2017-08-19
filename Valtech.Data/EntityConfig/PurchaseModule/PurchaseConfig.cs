@@ -14,6 +14,10 @@ namespace Valtech.Data.EntityConfig.PurchaseModule
         {
             HasKey(u => u.Id);
 
+            Property(u => u.Id)
+                .IsRequired()
+                .HasMaxLength(128);
+
             Property(u => u.PurchaseSummary)
                 .IsRequired()
                 .HasMaxLength(2048);
@@ -34,6 +38,8 @@ namespace Valtech.Data.EntityConfig.PurchaseModule
                     m.MapRightKey("PurchaseId");
                     m.ToTable("ProductPurchase");
                 });
+            Property(u => u.PaymentMethodId)
+                .HasMaxLength(128);
         }
 
     }

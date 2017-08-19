@@ -9,7 +9,13 @@ var utils = {
 
     formatMoneyFromTextToFloat: function (value) {
         if (value) {
-            var valor = value.replace(/\./g, '').replace(',', '.').trim();
+            var valor = null;
+            if (global.idioma == 'pt-BR') {
+                valor = value.replace(/\./g, '').replace(',', '.').trim();
+            }
+            else {
+                valor = value.replace(/\,/g, '').trim();
+            }
             valor = parseFloat(valor);
             if (valor > 0) {
                 return valor;
@@ -38,7 +44,14 @@ var utils = {
 
             return stringArray.join(',');
         } else {
-            return 'TODO: language unsuported';
+            value = value.toString();
+            var stringArray = value.split('.');
+            if (stringArray.length > 1) {
+                stringArray[1] = utils.zeroFillRigth(stringArray[1], 2);
+            } else {
+                stringArray[1] = '00'
+            }
+            return stringArray.join('.');
         };
     },
 

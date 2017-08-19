@@ -8,7 +8,7 @@ namespace Valtech.Domain.Entities
 {
     public abstract class AbstractEntity
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public DateTime RecordDate { get; set; }
         public DateTime? UpdateDate { get; set; }
 

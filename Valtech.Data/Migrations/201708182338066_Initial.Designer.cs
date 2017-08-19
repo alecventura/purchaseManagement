@@ -13,7 +13,7 @@ namespace Valtech.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201708181700236_Initial"; }
+            get { return "201708182338066_Initial"; }
         }
         
         string IMigrationMetadata.Source

@@ -6,17 +6,23 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/base")
+
+    <script>
+        var global = {
+            APPLICATION_PATH: "@Request.ApplicationPath",
+            BASEURL_PATH: "@Request.Url.GetLeftPart(UriPartial.Authority).ToLower()@Url.Content("~")"
+        };
+    </script>    
 </head>
 <body>
     @Html.Partial("_Header")
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
+    <footer>
+        <p class="text-center">Valtech Payment Management Test - Alec Ventura</p>
+    </footer>
 
     @if (Request.RawUrl != HttpRuntime.AppDomainAppVirtualPath && Request.RawUrl != HttpRuntime.AppDomainAppVirtualPath + "/")
     {

@@ -22,3 +22,75 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.requiredField:after {
+    content: "*";
+    color: #bd1212;
+    margin-left: 2px;
+    vertical-align: top;
+    position: absolute;
+}
+
+.requiredField-relative:after {
+    position: relative;
+}
+
+.requiredFieldLabel {
+    font-size: .85em;
+    position: absolute;
+    left: 0;
+}
+
+    .requiredFieldLabel:before {
+        content: "*";
+        color: #bd1212;
+        margin-right: 2px;
+        vertical-align: top;
+    }
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #333;
+    padding: 3px;
+    z-index: 10;
+}
+
+    footer p {
+        color: #fff;
+        margin: 0;
+        padding: 3px 0;
+        font-size: 12px;
+    }
+
+    footer .center {
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    footer .left {
+        float: left;
+    }
+
+.button-group {
+    margin: 20px 0;
+    padding-top: 10px;
+    border-top: 1px dotted #ccc;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    clear: both;
+}
+
+    .button-group > * {
+        margin: 0 5px;
+    }
+
+.validation-error {
+    border-left: 3px solid #bd1212;
+    font-size: .75em;
+    padding: 0 5px;
+    display: block;
+}

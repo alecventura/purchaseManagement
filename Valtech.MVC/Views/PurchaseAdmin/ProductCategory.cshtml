@@ -3,5 +3,45 @@
     ViewBag.Title = "ProductCategory";
 }
 
-<h2>ProductCategory</h2>
+<div class="row" id="ProductCategory-content">
+    <h2 class="titulo" data-bind="text: lang.title"></h2>
+    <form class="col-md-12 form-horizontal" data-bind="submit: onFormSubmited">
+        <div class="form-group" data-bind="with: $root.request">
+            <label class="control-label col-md-2 requiredField" data-bind="text: lang.Name"></label>
+            <div class="col-md-10" id="Name">
+                <input class="form-control text-box single-line" type="text" data-bind="value: Name">
+            </div>
+        </div>
+        <div class="button-group">
+            <span class="requiredFieldLabel" data-bind="text: lang.requiredLabel"></span>
+            <input type="button" data-bind="value: lang.CancelButton, click: onCancelClick" class="btn btn-default">
+            <input type="submit" data-bind="value: lang.SaveButton" class="btn btn-primary">
+        </div>
 
+    </form>
+
+    <div id="result-list" class="grid" data-bind="if: $root.entitiesList().length > 0">
+
+        <table class="table" id="result-table">
+            <thead>
+                <tr>
+                    <th data-bind="sort: { arr: $root.entitiesList, prop: 'Name' }, text: lang.Name"></th>
+                    <th width="100"></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: $root.entitiesList">
+                <tr>
+                    <td data-bind="text: $data.Name"></td>
+                    <td>
+                        <a href="#" data-bind='click: $root.onEditClick'>
+                            <span class="glyphicon glyphicon-pencil" data-bind='attr: {title: lang["EditTooltip"]}, tooltip: { placement: "top" }'></span>
+                        </a>
+                        <a href="#" data-bind='click: $root.onDeleteClick'>
+                            <span class="glyphicon glyphicon-remove" data-bind='attr: {title: lang["DeleteTooltip"]}, tooltip: { placement: "top" }'></span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

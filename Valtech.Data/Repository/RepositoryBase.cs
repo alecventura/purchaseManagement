@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Valtech.Data.Context;
 using Valtech.Domain.Interfaces.Repository;
 using System.Data.Entity.Migrations;
+using System.Reflection;
 
 namespace Valtech.Data.Repository
 {
@@ -43,6 +44,7 @@ namespace Valtech.Data.Repository
 
         public TEntity Add(TEntity obj)
         {
+            TrySetProperty(obj, "Id", Guid.NewGuid().ToString());
             _context.Set<TEntity>().Add(obj);
             _context.SaveChanges();
             return obj;
@@ -100,6 +102,13 @@ namespace Valtech.Data.Repository
         {
             _context.Set<TEntity>().RemoveRange(TEntities);
             _context.SaveChanges();
+        }
+
+        private void TrySetProperty(object obj, string property, object value)
+        {
+            var prop = obj.GetType().GetProperty(property, BindingFlags.Public | BindingFlags.Instance);
+            if (prop != null && prop.CanWrite)
+                prop.SetValue(obj, value, null);
         }
     }
 }

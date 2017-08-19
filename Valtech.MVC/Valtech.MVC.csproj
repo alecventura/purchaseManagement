@@ -17,7 +17,7 @@
     <AssemblyName>Valtech.MVC</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -177,17 +183,69 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Configuration\connectionStrings.config" />
-    <None Include="Scripts\Lib\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\Lib\jquery-1.10.2.js" />
-    <Content Include="Scripts\Lib\jquery-1.10.2.min.js" />
-    <None Include="Scripts\Lib\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\Lib\jquery.validate.js" />
-    <Content Include="Scripts\Lib\jquery.validate.min.js" />
-    <Content Include="Scripts\Lib\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\Lib\jquery.validate.unobtrusive.min.js" />
+    <None Include="Scripts\Lib\jquery\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\Lib\jquery\jquery-2.1.4.js" />
+    <Content Include="Scripts\Lib\jquery\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\Lib\jquery\jquery-ui-1.9.0.js" />
+    <Content Include="Scripts\Lib\jquery\jquery-ui-1.9.0.min.js" />
+    <Content Include="Scripts\Lib\jquery\jquery-ui.min.js" />
+    <Content Include="Scripts\Lib\jquery\jquery.mask.js" />
+    <Content Include="Scripts\Lib\jquery\jquery.maskMoney.js" />
+    <Content Include="Scripts\Lib\jquery\jquery.ui.widget.js" />
+    <None Include="Scripts\Lib\jquery\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\Lib\jquery\jquery.validate.js" />
+    <Content Include="Scripts\Lib\jquery\jquery.validate.min.js" />
+    <Content Include="Scripts\Lib\jquery\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\Lib\jquery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Lib\knockout\customExtenders\knockout.extender.confirmable.js" />
+    <Content Include="Scripts\Lib\knockout\customHandlers\knockout.fn.withComponent.js" />
+    <Content Include="Scripts\Lib\knockout\customHandlers\knockout.handler.numberLength.js" />
+    <Content Include="Scripts\Lib\knockout\customHandlers\knockout.handler.pickadate.js" />
+    <Content Include="Scripts\Lib\knockout\customHandlers\knockout.handler.table.sort.js" />
+    <Content Include="Scripts\Lib\knockout\customHandlers\knockout.handler.tooltip.js" />
+    <Content Include="Scripts\Lib\knockout\knockout-3.3.0.debug.js" />
+    <Content Include="Scripts\Lib\knockout\knockout-3.3.0.js" />
+    <Content Include="Scripts\Lib\knockout\knockout.mapping-latest.debug.js" />
+    <Content Include="Scripts\Lib\knockout\knockout.mapping-latest.js" />
+    <Content Include="Scripts\Lib\lodash.js" />
+    <Content Include="Scripts\Lib\lodash.min.js" />
     <Content Include="Scripts\Lib\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Lib\noty\jquery.noty.js" />
+    <Content Include="Scripts\Lib\noty\layouts\bottom.js" />
+    <Content Include="Scripts\Lib\noty\layouts\bottomCenter.js" />
+    <Content Include="Scripts\Lib\noty\layouts\bottomLeft.js" />
+    <Content Include="Scripts\Lib\noty\layouts\bottomRight.js" />
+    <Content Include="Scripts\Lib\noty\layouts\center.js" />
+    <Content Include="Scripts\Lib\noty\layouts\centerLeft.js" />
+    <Content Include="Scripts\Lib\noty\layouts\centerRight.js" />
+    <Content Include="Scripts\Lib\noty\layouts\inline.js" />
+    <Content Include="Scripts\Lib\noty\layouts\top.js" />
+    <Content Include="Scripts\Lib\noty\layouts\topCenter.js" />
+    <Content Include="Scripts\Lib\noty\layouts\topLeft.js" />
+    <Content Include="Scripts\Lib\noty\layouts\topRight.js" />
+    <Content Include="Scripts\Lib\noty\packaged\jquery.noty.packaged.min.js" />
+    <Content Include="Scripts\Lib\noty\themes\bootstrap.js" />
+    <Content Include="Scripts\Lib\noty\themes\default.js" />
+    <Content Include="Scripts\Lib\noty\themes\relax.js" />
     <Content Include="Scripts\Lib\respond.js" />
     <Content Include="Scripts\Lib\respond.min.js" />
+    <Content Include="Scripts\Util\utils.js" />
+    <Content Include="Scripts\Valtech\Behavior\PurchaseAdmin\paymentMethod.js" />
+    <Content Include="Scripts\Valtech\Behavior\PurchaseAdmin\product.js" />
+    <Content Include="Scripts\Valtech\Behavior\PurchaseAdmin\productCategory.js" />
+    <Content Include="Scripts\Valtech\Behavior\Purchase\finish.js" />
+    <Content Include="Scripts\Valtech\Behavior\Purchase\start.js" />
+    <Content Include="Scripts\Valtech\Resource\geralResource.js" />
+    <Content Include="Scripts\Valtech\Resource\PurchaseAdmin\paymentMethodResource.js" />
+    <Content Include="Scripts\Valtech\Resource\PurchaseAdmin\productCategoryResource.js" />
+    <Content Include="Scripts\Valtech\Resource\PurchaseAdmin\productResource.js" />
+    <Content Include="Scripts\Valtech\Resource\Purchase\finishResource.js" />
+    <Content Include="Scripts\Valtech\Resource\Purchase\startResource.js" />
+    <Content Include="Scripts\Valtech\Service\PurchaseAdmin\paymentMethodService.js" />
+    <Content Include="Scripts\Valtech\Service\PurchaseAdmin\productCategoryService.js" />
+    <Content Include="Scripts\Valtech\Service\PurchaseAdmin\productService.js" />
+    <Content Include="Scripts\Valtech\Service\Purchase\finishService.js" />
+    <Content Include="Scripts\Valtech\Service\Purchase\startService.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -203,13 +261,15 @@
     <Content Include="Views\PurchaseAdmin\Product.cshtml" />
     <Content Include="Views\PurchaseAdmin\ProductCategory.cshtml" />
     <Content Include="Views\PurchaseAdmin\PaymentMethod.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\Menu\_Admin.cshtml" />
+    <Content Include="Views\Shared\Menu\_Purchase.cshtml" />
+    <Content Include="Views\Shared\Forbidden.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\Valtech\Behavior\PurchaseModule\" />
-    <Folder Include="Scripts\Valtech\Resource\PurchaseModule\" />
-    <Folder Include="Scripts\Valtech\Service\PurchaseModule\" />
     <Folder Include="Views\Purchase\" />
   </ItemGroup>
   <ItemGroup>
@@ -225,9 +285,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\Lib\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Valtech.Application\Valtech.Application.csproj">
       <Project>{7a966adf-b869-40f8-9985-01e9c625347c}</Project>
       <Name>Valtech.Application</Name>
@@ -236,6 +293,9 @@
       <Project>{34E48C83-A1E6-497D-850C-6EC67D8BCE63}</Project>
       <Name>Valtech.CrossCutting.IoC</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Lib\jquery\jquery-2.1.4.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -255,7 +315,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>30602</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:29827/</IISUrl>
+          <IISUrl>http://localhost/Valtech</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

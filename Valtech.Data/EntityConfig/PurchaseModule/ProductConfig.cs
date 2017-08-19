@@ -14,6 +14,10 @@ namespace Valtech.Data.EntityConfig.PurchaseModule
         {
             HasKey(u => u.Id);
 
+            Property(u => u.Id)
+                .IsRequired()
+                .HasMaxLength(128);
+
             Property(u => u.Name)
                 .IsRequired()
                 .HasMaxLength(512);
@@ -25,6 +29,8 @@ namespace Valtech.Data.EntityConfig.PurchaseModule
                 .WithMany()
                 .HasForeignKey(k => k.CategoryId)
                 .WillCascadeOnDelete(false);
+            Property(u => u.CategoryId)
+                .HasMaxLength(128);
         }
 
     }

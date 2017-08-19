@@ -11,7 +11,7 @@ namespace Valtech.Data.Migrations
                 "dbo.ProductCategory",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.String(nullable: false, maxLength: 128),
                         Name = c.String(nullable: false, maxLength: 512),
                         RecordDate = c.DateTime(nullable: false),
                         UpdateDate = c.DateTime(),
@@ -22,7 +22,7 @@ namespace Valtech.Data.Migrations
                 "dbo.PaymentMethod",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.String(nullable: false, maxLength: 128),
                         Type = c.String(nullable: false, maxLength: 256),
                         RecordDate = c.DateTime(nullable: false),
                         UpdateDate = c.DateTime(),
@@ -33,10 +33,10 @@ namespace Valtech.Data.Migrations
                 "dbo.Product",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.String(nullable: false, maxLength: 128),
                         Name = c.String(nullable: false, maxLength: 512),
                         Price = c.Double(nullable: false),
-                        CategoryId = c.Guid(nullable: false),
+                        CategoryId = c.String(nullable: false, maxLength: 128),
                         RecordDate = c.DateTime(nullable: false),
                         UpdateDate = c.DateTime(),
                     })
@@ -47,9 +47,9 @@ namespace Valtech.Data.Migrations
                 "dbo.Purchase",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.String(nullable: false, maxLength: 128),
                         PurchaseSummary = c.String(nullable: false, maxLength: 2048),
-                        PaymentMethodId = c.Guid(nullable: false),
+                        PaymentMethodId = c.String(nullable: false, maxLength: 128),
                         TotalPrice = c.Double(nullable: false),
                         RecordDate = c.DateTime(nullable: false),
                         UpdateDate = c.DateTime(),
@@ -61,8 +61,8 @@ namespace Valtech.Data.Migrations
                 "dbo.ProductPurchase",
                 c => new
                     {
-                        ProductId = c.Guid(nullable: false),
-                        PurchaseId = c.Guid(nullable: false),
+                        ProductId = c.String(nullable: false, maxLength: 128),
+                        PurchaseId = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.ProductId, t.PurchaseId })
                 .ForeignKey("dbo.Purchase", t => t.ProductId)
