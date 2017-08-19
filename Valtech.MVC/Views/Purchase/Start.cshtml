@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "Start buying";
+}
+
+<div class="row" id="start-content">
+    <h2 class="titulo" data-bind="text: lang.title"></h2>
+    <form class="col-md-12 form-horizontal" data-bind="submit: onFormSubmited">
+        <div class="form-group" data-bind="with: $root.request">
+            <label class="control-label col-md-2 requiredField" data-bind="text: lang.Name"></label>
+            <div class="col-md-4" id="Name">
+                <input class="form-control text-box single-line" type="text" data-bind="value: Name">
+            </div>
+            <label class="control-label col-md-2 requiredField" data-bind="text: lang.Category"></label>
+            <div class="col-md-4" id="CategoryId">
+                <select class="form-control" type="text" data-bind="options: $root.categoryList, optionsText: 'Name', optionsValue: 'Id', value: CategoryId, optionsCaption: lang.Choose"></select>
+            </div>
+        </div>
+        <div class="form-group" data-bind="with: $root.request">
+            <label class="control-label col-md-2 requiredField" data-bind="text: lang.MinPrice"></label>
+            <div class="col-md-4" id="MinPrice">
+                <input class="form-control currencyMask" type="text" data-bind="value: MinPriceText, valueUpdate: 'afterkeydown'" maxlength="20">
+            </div>
+            <label class="control-label col-md-2 requiredField" data-bind="text: lang.MaxPrice"></label>
+            <div class="col-md-4" id="MaxPrice">
+                <input class="form-control currencyMask" type="text" data-bind="value: MaxPriceText, valueUpdate: 'afterkeydown'" maxlength="20">
+            </div>
+        </div>
+        <div class="button-group">
+            <span class="requiredFieldLabel" data-bind="text: lang.requiredLabel"></span>
+            <input type="button" data-bind="value: lang.CancelButton, click: onCancelClick" class="btn btn-default">
+            <input type="submit" data-bind="value: lang.FilterButton" class="btn btn-primary">
+        </div>
+
+    </form>
+
+    <h3 data-bind="visible: $root.entitiesList().length > 0, value: lang.productsAvailable"></h3>
+    <div id="result-list" class="grid" data-bind="if: $root.entitiesList().length > 0">
+
+        <table class="table" id="result-table">
+            <thead>
+                <tr>
+                    <th data-bind="sort: { arr: $root.entitiesList, prop: 'Name' }, text: lang.Name"></th>
+                    <th data-bind="sort: { arr: $root.entitiesList, prop: 'CategoryName' }, text: lang.Category"></th>
+                    <th data-bind="sort: { arr: $root.entitiesList, prop: 'Price' }, text: lang.Price"></th>
+                    <th width="100" data-bind="sort: { arr: $root.entitiesList, prop: 'Quantity' }, text: lang.Quantity"></th>
+                    <th width="100"></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: $root.entitiesList">
+                <tr>
+                    CategoryName
+                    <td data-bind="text: $data.Name"></td>
+                    <td data-bind="text: $data.CategoryName"></td>
+                    <td data-bind="text: utils.formatCurrency($data.Price)"></td>
+                    <td class="quantity-column">
+                        <button class="btn-danger" data-bind='attr: {title: lang["RemoveTooltip"]}, tooltip: { placement: "top" }, click: $root.decreaseProductQuantity'><span class="glyphicon glyphicon-minus"></span></button>
+                        <input class="form-control" type="number" data-bind="value: Quantity, valueUpdate: 'afterkeydown'" min="0" max="9999" step="1">
+                        <button class="btn-success" data-bind='attr: {title: lang["AddTooltip"]}, tooltip: { placement: "top" }, click: $root.increaseProductQuantity'><span class="glyphicon glyphicon-plus"></span></button>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" data-bind='click: $root.addProductToCart, enable: $data.productHasQuantity()'>
+                            <span data-bind="text: lang.AddToCart"></span><span class="glyphicon glyphicon-shopping-cart"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3 data-bind="visible: $root.cartList().length > 0, value: lang.cartProducts"></h3>
+    <div id="result-list" class="grid" data-bind="if: $root.cartList().length > 0">
+
+        <table class="table" id="result-table">
+            <thead>
+                <tr>
+                    <th data-bind="sort: { arr: $root.cartList, prop: 'Name' }, text: lang.Name"></th>
+                    <th data-bind="sort: { arr: $root.cartList, prop: 'CategoryName' }, text: lang.Category"></th>
+                    <th data-bind="sort: { arr: $root.cartList, prop: 'Price' }, text: lang.Price"></th>
+                    <th width="100"></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: $root.cartList">
+                <tr>
+                    CategoryName
+                    <td data-bind="text: $data.Name"></td>
+                    <td data-bind="text: $data.CategoryName"></td>
+                    <td data-bind="text: utils.formatCurrency($data.Price)"></td>
+                    <td>
+                        <a href="#" data-bind='click: $root.onDeleteClick'>
+                            <span class="glyphicon glyphicon-remove" data-bind='attr: {title: lang["DeleteTooltip"]}, tooltip: { placement: "top" }'></span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

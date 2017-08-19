@@ -8,10 +8,16 @@ namespace Valtech.MVC.Controllers
 {
     public class PurchaseController : Controller
     {
-        // GET: Purchase
-        public ActionResult Index()
+        #region Render Views
+        public ActionResult Start()
         {
             return View();
         }
+
+        public ActionResult Finish()
+        {
+            return View();
+        }
+        #endregion
     }
 }

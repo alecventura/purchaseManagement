@@ -9,5 +9,6 @@ namespace Valtech.Domain.Interfaces.Repository.PurchaseModule
 {
     public interface IProductRepository : IRepositoryBase<Product>
     {
+        IEnumerable<Product> GetAllLoadCategory();
     }
 }

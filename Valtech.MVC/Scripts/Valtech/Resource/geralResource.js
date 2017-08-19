@@ -5,12 +5,16 @@
 
         Name: 'Name',
         requiredLabel: ' required field',
-        CancelButton: 'Cancel',
-        SaveButton: 'Save',
         Choose: 'Choose',
 
+        //Buttons
+        CancelButton: 'Cancel',
+        SaveButton: 'Save',
+
+        //Tooltips
         EditTooltip: 'Edit',
         DeleteTooltip: 'Delete',
+        FilterButton: 'Filter',
 
         Validation: {
             Required: 'This field is required',

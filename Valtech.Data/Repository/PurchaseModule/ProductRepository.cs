@@ -10,5 +10,9 @@ namespace Valtech.Data.Repository.PurchaseModule
 {
     public class ProductRepository : RepositoryBase<Product>, IProductRepository
     {
+        public IEnumerable<Product> GetAllLoadCategory()
+        {
+            return _context.Set<Product>().Include("Category").ToList();
+        }
     }
 }

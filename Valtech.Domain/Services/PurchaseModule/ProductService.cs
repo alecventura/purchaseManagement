@@ -17,5 +17,10 @@ namespace Valtech.Domain.Services.PurchaseModule
         {
             _repository = repository;
         }
+
+        public IEnumerable<Product> GetAllLoadCategory()
+        {
+            return _repository.GetAllLoadCategory();
+        }
     }
 }

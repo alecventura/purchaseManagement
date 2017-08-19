@@ -35,8 +35,12 @@ var viewModel = function (entitiesList, categories) {
     self.onEditClick = function (e) {
         self.onCancelClick();
         self.isUpdate(true);
-        self.request().Type(e.Type)
-        self.request().Id(e.Id)
+        self.request().Name(e.Name);
+        self.request().CategoryId(e.CategoryId);
+        self.request().Price(e.Price);
+        self.request().PriceText(e.Price + '');
+        self.request().Id(e.Id);
+        self.applyCurrencyMask();
     };
 
     self.onDeleteClick = function (e) {
@@ -50,6 +54,7 @@ var viewModel = function (entitiesList, categories) {
     self.onCancelClick = function () {
         self.request(requestObj());
         self.isUpdate(false);
+        self.applyCurrencyMask();
     };
 
     self.applyCurrencyMask = function () {

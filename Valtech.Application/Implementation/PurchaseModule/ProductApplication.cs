@@ -27,7 +27,7 @@ namespace Valtech.Application.Implementation.PurchaseModule
 
         public List<ProductViewModel> GetAll()
         {
-            return Mapper.Map<List<Product>, List<ProductViewModel>>(_service.GetAll().ToList());
+            return Mapper.Map<List<Product>, List<ProductViewModel>>(_service.GetAllLoadCategory().ToList());
         }
 
         public void RemoveById(string id)

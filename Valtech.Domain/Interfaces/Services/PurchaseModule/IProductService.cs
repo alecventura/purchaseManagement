@@ -10,5 +10,6 @@ namespace Valtech.Domain.Interfaces.Services.PurchaseModule
 {
     public interface IProductService : IServiceBase<Product>
     {
+        IEnumerable<Product> GetAllLoadCategory();
     }
 }
