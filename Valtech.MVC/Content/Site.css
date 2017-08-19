@@ -115,3 +115,7 @@ footer {
 .quantity-column > button {
     border-radius: 4px;
 }
+
+.dropdown {
+    cursor: pointer;
+}

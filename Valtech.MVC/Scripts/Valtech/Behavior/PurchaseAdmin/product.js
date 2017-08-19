@@ -28,6 +28,7 @@ var viewModel = function (entitiesList, categories) {
             self.entitiesList(data);
             self.request(requestObj());
             utils.showLoading(false);
+            self.applyCurrencyMask();
             noty({ text: lang.saveSuccess, timeout: 2000, type: 'success' });
         });
     };

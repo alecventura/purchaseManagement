@@ -12,6 +12,8 @@
         MaxPrice: 'Final price',
         Quantity: 'Quantity',
         AddToCart: 'Add to cart ',
+        cartProducts: 'Products in cart',
+        TotalPrice: 'Total price',
 
         title: 'Buy now!',
     };

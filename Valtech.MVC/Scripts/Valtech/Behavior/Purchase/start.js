@@ -4,7 +4,6 @@ var service = startService();
 var requestObj = function () {
 
     var obj = {
-        Id: ko.observable(null),
         Name: ko.observable(null),
         CategoryId: ko.observable(null),
         MinPrice: ko.observable(null),
@@ -23,7 +22,7 @@ var requestObj = function () {
 
 var viewModel = function (entitiesList, categories, cartProducts) {
     var self = this;
-    self.request = ko.observable(requestObj());
+    self.filter = ko.observable(requestObj());
     self.categoryList = ko.observableArray(categories || []);
 
     self.entitiesList = ko.observableArray([]);
@@ -31,35 +30,41 @@ var viewModel = function (entitiesList, categories, cartProducts) {
         if (list && list.length > 0) {
             list.map(function (item) {
                 item.Quantity = ko.observable(null);
+                item.TotalQuantity = ko.observable(null);                
                 item.productHasQuantity = function () {
-                    debugger;
                     return item.Quantity() && parseInt(item.Quantity()) > 0;
                 }
             });
         }
     });
     self.entitiesList(entitiesList || []);
+    self.entitiesListFiltered = ko.observableArray(self.entitiesList());
 
     self.onFormSubmited = function () {
-        service.add(ko.toJS(self.request), function (data) {
-            self.entitiesList(data);
-            self.request(requestObj());
-            utils.showLoading(false);
-            noty({ text: lang.saveSuccess, timeout: 2000, type: 'success' });
-        });
+        var arrayAux = self.entitiesList();
+        if (self.filter().CategoryId() && self.filter().CategoryId().length > 0) {
+            arrayAux = arrayAux.filter(function (item) { return item.CategoryId == self.filter().CategoryId() });
+        }
+        if (self.filter().Name() && self.filter().Name().length > 0) {
+            arrayAux = arrayAux.filter(function (item) { return item.Name.toLowerCase().indexOf(self.filter().Name().toLowerCase()) > -1 });
+        }
+        if (self.filter().MinPrice() && self.filter().MinPrice() > 0) {
+            arrayAux = arrayAux.filter(function (item) { return item.Price >= self.filter().MinPrice() });
+        }
+        if (self.filter().MaxPrice() && self.filter().MaxPrice() > 0) {
+            arrayAux = arrayAux.filter(function (item) { return item.Price <= self.filter().MaxPrice() });
+        }
+        self.entitiesListFiltered(arrayAux);
     };
 
     self.onDeleteClick = function (e) {
-        service.remove(e.Id, function (data) {
-            self.entitiesList(data);
-            utils.showLoading(false);
-            noty({ text: lang.deleteSuccess, timeout: 2000, type: 'success' });
-        });
+        self.cartList.remove(e);
     };
 
     self.onCancelClick = function () {
-        self.request(requestObj());
+        self.filter(requestObj());
         self.applyCurrencyMask();
+        self.entitiesListFiltered(self.entitiesList());
     };
 
     self.decreaseProductQuantity = function (p) {
@@ -81,7 +86,20 @@ var viewModel = function (entitiesList, categories, cartProducts) {
     };
 
     self.addProductToCart = function (p) {
-        self.cartList.push(p);
+        if (self.cartList().indexOf(p) > -1) {
+            var itemInCart = self.cartList()[self.cartList().indexOf(p)];
+            itemInCart.TotalQuantity(parseInt(itemInCart.TotalQuantity()) + parseInt(p.Quantity()));
+        } else {
+            p.TotalQuantity(p.Quantity());
+            self.cartList.push(p);
+        }
+        p.Quantity(null);
+    };
+
+    self.onFinishClick = function () {
+        service.finish(ko.toJS(self.cartList), function (data) {
+            utils.showLoading(false);
+        });
     };
 
     self.applyCurrencyMask = function () {

@@ -1,8 +1,8 @@
 ﻿function startService() {
     'use strict'
 
-    var _add = function (data, callback) {
-            return utils.postJSON(global.BASEURL_PATH + "Purchase/UpdateProduct", data, callback);
+    var _finish = function (data, callback) {
+            return utils.postJSON(global.BASEURL_PATH + "Purchase/StoreProductsOnSession", data, callback);
     },
         _remove = function (Id, callback) {
             return utils.deleteJSON(global.BASEURL_PATH + "Purchase/DeleteProduct?Id=" + Id, callback);
@@ -15,7 +15,7 @@
         };
 
     var service = {
-        add: _add,
+        finish: _finish,
         getProductList: _getProductList,
         getProductCategoryList: _getProductCategoryList,
         remove: _remove
