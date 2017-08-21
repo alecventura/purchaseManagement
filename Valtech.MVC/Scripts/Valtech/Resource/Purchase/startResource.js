@@ -14,6 +14,7 @@
         AddToCart: 'Add to cart ',
         cartProducts: 'Products in cart',
         TotalPrice: 'Total price',
+        Filter: 'Filter',
 
         title: 'Buy now!',
     };

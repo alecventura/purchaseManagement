@@ -29,6 +29,7 @@ var viewModel = function (entitiesList, categories, cartProducts) {
     self.entitiesList.subscribe(function (list) {
         if (list && list.length > 0) {
             list.map(function (item) {
+                item.ProductId = item.Id;
                 item.Quantity = ko.observable(null);
                 item.TotalQuantity = ko.observable(null);                
                 item.productHasQuantity = function () {
@@ -79,6 +80,9 @@ var viewModel = function (entitiesList, categories, cartProducts) {
         }
     };
 
+    cartProducts.map(function (item) {
+        item.TotalQuantity = ko.observable(item.TotalQuantity)
+    });
     self.cartList = ko.observableArray(cartProducts || []);
 
     self.removeProductFromCart = function (p) {
@@ -86,9 +90,9 @@ var viewModel = function (entitiesList, categories, cartProducts) {
     };
 
     self.addProductToCart = function (p) {
-        if (self.cartList().indexOf(p) > -1) {
-            var itemInCart = self.cartList()[self.cartList().indexOf(p)];
-            itemInCart.TotalQuantity(parseInt(itemInCart.TotalQuantity()) + parseInt(p.Quantity()));
+        var existentProduct = self.cartList().find(function (item) { return item.ProductId === p.ProductId });
+        if (existentProduct) {
+            existentProduct.TotalQuantity(parseInt(existentProduct.TotalQuantity()) + parseInt(p.Quantity()));
         } else {
             p.TotalQuantity(p.Quantity());
             self.cartList.push(p);
@@ -99,6 +103,7 @@ var viewModel = function (entitiesList, categories, cartProducts) {
     self.onFinishClick = function () {
         service.finish(ko.toJS(self.cartList), function (data) {
             utils.showLoading(false);
+            window.location.href = data;
         });
     };
 
@@ -109,9 +114,9 @@ var viewModel = function (entitiesList, categories, cartProducts) {
 };
 
 $(document).ready(function () {
-    $.when(service.getProductList(), service.getProductCategoryList())
-        .then(function (entitiesList, categories) {
-            ko.applyBindings(new viewModel(entitiesList[0], categories[0], []), document.getElementById("start-content"));
+    $.when(service.getProductList(), service.getProductCategoryList(), service.getCartProductList())
+        .then(function (entitiesList, categories, cartProductsList) {
+            ko.applyBindings(new viewModel(entitiesList[0], categories[0], cartProductsList[0]), document.getElementById("start-content"));
             utils.showLoading(false);
         });
 });

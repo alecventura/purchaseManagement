@@ -48,7 +48,6 @@ namespace Valtech.Data.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
-                        PurchaseSummary = c.String(nullable: false, maxLength: 2048),
                         PaymentMethodId = c.String(nullable: false, maxLength: 128),
                         TotalPrice = c.Double(nullable: false),
                         RecordDate = c.DateTime(nullable: false),
@@ -58,25 +57,30 @@ namespace Valtech.Data.Migrations
                 .ForeignKey("dbo.PaymentMethod", t => t.PaymentMethodId);
             
             CreateTable(
-                "dbo.ProductPurchase",
+                "dbo.ProductOrder",
                 c => new
                     {
-                        ProductId = c.String(nullable: false, maxLength: 128),
-                        PurchaseId = c.String(nullable: false, maxLength: 128),
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Price = c.Double(nullable: false),
+                        Quantity = c.Int(nullable: false),
+                        ProductId = c.String(maxLength: 128),
+                        PurchaseId = c.String(maxLength: 128),
+                        RecordDate = c.DateTime(nullable: false),
+                        UpdateDate = c.DateTime(),
                     })
-                .PrimaryKey(t => new { t.ProductId, t.PurchaseId })
-                .ForeignKey("dbo.Purchase", t => t.ProductId)
-                .ForeignKey("dbo.Product", t => t.PurchaseId);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Product", t => t.ProductId)
+                .ForeignKey("dbo.Purchase", t => t.PurchaseId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.ProductPurchase", "PurchaseId", "dbo.Product");
-            DropForeignKey("dbo.ProductPurchase", "ProductId", "dbo.Purchase");
+            DropForeignKey("dbo.ProductOrder", "PurchaseId", "dbo.Purchase");
+            DropForeignKey("dbo.ProductOrder", "ProductId", "dbo.Product");
             DropForeignKey("dbo.Purchase", "PaymentMethodId", "dbo.PaymentMethod");
             DropForeignKey("dbo.Product", "CategoryId", "dbo.ProductCategory");
-            DropTable("dbo.ProductPurchase");
+            DropTable("dbo.ProductOrder");
             DropTable("dbo.Purchase");
             DropTable("dbo.Product");
             DropTable("dbo.PaymentMethod");

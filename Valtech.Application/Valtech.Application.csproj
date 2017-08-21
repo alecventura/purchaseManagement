@@ -84,9 +84,11 @@
     <Compile Include="Interface\PurchaseModule\IPurchaseApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ModelStateExtensions.cs" />
+    <Compile Include="ViewModels\PurchaseModule\ProductOrderViewModel.cs" />
     <Compile Include="ViewModels\PurchaseModule\PaymentMethodViewModel.cs" />
     <Compile Include="ViewModels\PurchaseModule\ProductCategoryViewModel.cs" />
     <Compile Include="ViewModels\PurchaseModule\ProductViewModel.cs" />
+    <Compile Include="ViewModels\PurchaseModule\PurchaseConfirmViewModel.cs" />
     <Compile Include="ViewModels\ViewModelErrors.cs" />
   </ItemGroup>
   <ItemGroup>

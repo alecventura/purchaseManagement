@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Success";
+}
+
+<div class="row" id="finish-content">
+    <h2 class="text-center" data-bind="text: lang.title"></h2>
+
+    <div class="text-center">
+        <button type="button" class="btn btn-lg btn-primary btn-continue-buying" data-bind='click: $root.onContinueClick'>
+            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+            Buy some more!
+            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+        </button>
+    </div>
+</div>

@@ -1,7 +1,48 @@
 ﻿
 @{
-    ViewBag.Title = "Finish";
+    ViewBag.Title = "Confirm";
 }
 
-<h2>Finish</h2>
+<div class="row" id="finish-content">
+    <h2 class="text-center" data-bind="text: lang.title"></h2>
 
+    <h3 data-bind="text: lang.confirm"></h3>
+    <div id="result-list" class="grid" data-bind="if: $root.entitiesList().length > 0">
+
+        <table class="table" id="result-table">
+            <thead>
+                <tr>
+                    <th data-bind="sort: { arr: $root.entitiesList, prop: 'Name' }, text: lang.Name"></th>
+                    <th data-bind="sort: { arr: $root.entitiesList, prop: 'TotalQuantity' }, text: lang.TotalQuantity"></th>
+                    <th data-bind="sort: { arr: $root.entitiesList, prop: 'Price' }, text: lang.Price"></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: $root.entitiesList">
+                <tr data-bind="css: { 'finish-total': $data.Class === 'Total'}">
+                    <td data-bind="text: $data.Name"></td>
+                    <td data-bind="text: $data.TotalQuantity"></td>
+                    <td data-bind="text: utils.formatCurrency($data.Price)"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <form class="col-md-12 form-horizontal" data-bind="submit: onFormSubmited">
+        <div class="form-group">
+            <label class="control-label col-md-4 requiredField" data-bind="text: lang.SelectPayment"></label>
+            <div class="col-md-4" id="PaymentMethodId">
+                <select class="form-control" type="text" data-bind="options: $root.paymentMethodList, optionsText: 'Type', optionsValue: 'Id', value: PaymentMethodId, optionsCaption: lang.Choose"></select>
+            </div>
+            <button type="submit" class="btn btn-success" data-bind='text: lang.ConfirmButton' />
+        </div>
+    </form>
+
+    <div class="text-center">
+        <button type="button" class="btn btn-lg btn-primary btn-continue-buying" data-bind='click: $root.onContinueClick'>
+            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+            Or continue buying
+            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+        </button>
+    </div>
+</div>

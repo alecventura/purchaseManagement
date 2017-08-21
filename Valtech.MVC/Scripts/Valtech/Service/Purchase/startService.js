@@ -10,6 +10,9 @@
         _getProductCategoryList = function () {
             return utils.getJSON(global.BASEURL_PATH + "PurchaseAdmin/GetProductCategoryList");
         },
+        _getCartProductList = function () {
+            return utils.getJSON(global.BASEURL_PATH + "Purchase/GetSelectedProductsList");
+        },
         _getProductList = function () {
             return utils.getJSON(global.BASEURL_PATH + "PurchaseAdmin/GetProductList");
         };
@@ -18,7 +21,8 @@
         finish: _finish,
         getProductList: _getProductList,
         getProductCategoryList: _getProductCategoryList,
-        remove: _remove
+        remove: _remove,
+        getCartProductList: _getCartProductList
     };
 
     return (service);

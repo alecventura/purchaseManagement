@@ -12,9 +12,9 @@ namespace Valtech.Domain.Entities.PurchaseModule
         {
             Id = Guid.NewGuid().ToString();
         }
-        public ProductCategory Category { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
+        public ProductCategory Category { get; set; }
         public string CategoryId { get; set; }
     }
 }

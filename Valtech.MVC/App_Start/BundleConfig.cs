@@ -65,6 +65,13 @@ namespace Valtech.MVC
                 "~/Scripts/Valtech/Resource/Purchase/finishResource.js",
                 "~/Scripts/Valtech/Service/Purchase/finishService.js",
                 "~/Scripts/Valtech/Behavior/Purchase/finish.js"));
+
+            // Purchase/Success
+            bundles.Add(new ScriptBundle("~/bundles/PurchaseSuccess")
+                .Include(
+                "~/Scripts/Valtech/Resource/Purchase/successResource.js",
+                "~/Scripts/Valtech/Behavior/Purchase/success.js"));
+            
         }
     }
 }

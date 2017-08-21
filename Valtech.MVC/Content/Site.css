@@ -119,3 +119,17 @@ footer {
 .dropdown {
     cursor: pointer;
 }
+
+.btn-finish {
+    margin-bottom: 80px;
+}
+
+.btn-continue-buying {
+    margin-bottom: 80px;
+    margin-top: 80px;
+}
+
+.finish-total {
+    background: #333;
+    color: white;
+}

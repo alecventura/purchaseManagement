@@ -18,10 +18,6 @@ namespace Valtech.Data.EntityConfig.PurchaseModule
                 .IsRequired()
                 .HasMaxLength(128);
 
-            Property(u => u.PurchaseSummary)
-                .IsRequired()
-                .HasMaxLength(2048);
-
             Property(u => u.TotalPrice)
                 .IsRequired();
 
@@ -30,14 +26,6 @@ namespace Valtech.Data.EntityConfig.PurchaseModule
                 .HasForeignKey(k => k.PaymentMethodId)
                 .WillCascadeOnDelete(false);
 
-            HasMany(u => u.Products)
-                .WithMany()
-                .Map(m =>
-                {
-                    m.MapLeftKey("ProductId");
-                    m.MapRightKey("PurchaseId");
-                    m.ToTable("ProductPurchase");
-                });
             Property(u => u.PaymentMethodId)
                 .HasMaxLength(128);
         }

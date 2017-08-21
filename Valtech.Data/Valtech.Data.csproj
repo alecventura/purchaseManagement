@@ -51,10 +51,15 @@
     <Compile Include="EntityConfig\PurchaseModule\PaymentMethodConfig.cs" />
     <Compile Include="EntityConfig\PurchaseModule\ProductCategoryConfig.cs" />
     <Compile Include="EntityConfig\PurchaseModule\ProductConfig.cs" />
+    <Compile Include="EntityConfig\PurchaseModule\ProductOrderConfig.cs" />
     <Compile Include="EntityConfig\PurchaseModule\PurchaseConfig.cs" />
-    <Compile Include="Migrations\201708182338066_Initial.cs" />
-    <Compile Include="Migrations\201708182338066_Initial.Designer.cs">
-      <DependentUpon>201708182338066_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201708211352549_Initial.cs" />
+    <Compile Include="Migrations\201708211352549_Initial.Designer.cs">
+      <DependentUpon>201708211352549_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708211403361_AddedColumnNameTableProductOrder.cs" />
+    <Compile Include="Migrations\201708211403361_AddedColumnNameTableProductOrder.Designer.cs">
+      <DependentUpon>201708211403361_AddedColumnNameTableProductOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,8 +80,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201708182338066_Initial.resx">
-      <DependentUpon>201708182338066_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201708211352549_Initial.resx">
+      <DependentUpon>201708211352549_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708211403361_AddedColumnNameTableProductOrder.resx">
+      <DependentUpon>201708211403361_AddedColumnNameTableProductOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

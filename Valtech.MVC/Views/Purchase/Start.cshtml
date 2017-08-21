@@ -4,7 +4,8 @@
 }
 
 <div class="row" id="start-content">
-    <h2 class="titulo" data-bind="text: lang.title"></h2>
+    <h2 class="text-center" data-bind="text: lang.title"></h2>
+    <h3 data-bind="text: lang.Filter"></h3>
     <form class="col-md-12 form-horizontal" data-bind="submit: onFormSubmited, with: $root.filter">
         <div class="form-group">
             <label class="control-label col-md-2 requiredField" data-bind="text: lang.Name"></label>
@@ -97,7 +98,7 @@
     </div>
 
     <div class="text-center">
-        <button type="button" class="btn btn-default btn-lg btn-primary" data-bind='click: $root.onFinishClick, enable: $root.cartList().length > 0'>
+        <button type="button" class="btn btn-default btn-lg btn-primary btn-finish" data-bind='click: $root.onFinishClick, enable: $root.cartList().length > 0'>
             <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Finish your purchase <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
         </button>
     </div>

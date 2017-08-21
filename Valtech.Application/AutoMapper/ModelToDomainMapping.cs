@@ -11,6 +11,8 @@ namespace Valtech.Application.AutoMapper
             CreateMap<PaymentMethodViewModel, PaymentMethod>();
             CreateMap<ProductCategoryViewModel, ProductCategory>();
             CreateMap<ProductViewModel, Product>();
+            CreateMap<ProductOrderViewModel, ProductOrder>()
+                .ForMember(dest => dest.Quantity, opts => opts.MapFrom(src => src.TotalQuantity));            
         }
     }
 }

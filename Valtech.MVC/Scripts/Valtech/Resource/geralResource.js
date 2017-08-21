@@ -15,6 +15,7 @@
         EditTooltip: 'Edit',
         DeleteTooltip: 'Delete',
         FilterButton: 'Filter',
+        ConfirmButton: 'Confirm',
 
         Validation: {
             Required: 'This field is required',
