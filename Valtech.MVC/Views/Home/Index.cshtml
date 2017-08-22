@@ -4,6 +4,10 @@
 
 <div class="jumbotron">
     <h1>Valtech Test</h1>
-    <p class="lead">This test was built using ASP.NET, MVC 5, EF 6 with Code First, DDD architecture and Knockout.js on frontend</p>
-    <p><a href="https://github.com/alecventura/purchaseManagement" class="btn btn-primary btn-lg">Git repository</a></p>
+    <p class="lead">This test was built using ASP.NET, MVC 5, EF 6 with Code First, DDD architecture and Knockout.js on the frontend.</p>
+    <p class="buttons-index">
+        <a href="https://github.com/alecventura/purchaseManagement" class="btn btn-primary btn-lg">Check the git repository</a> 
+        or 
+        <a href="@Request.Url.GetLeftPart(UriPartial.Authority).ToLower()@Url.Content("~")/Purchase/Start" class="btn btn-primary btn-lg">Start a new purchase</a>
+    </p>
 </div>
