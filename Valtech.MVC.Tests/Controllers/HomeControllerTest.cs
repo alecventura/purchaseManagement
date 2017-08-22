@@ -13,15 +13,26 @@ namespace Valtech.MVC.Tests.Controllers
     public class HomeControllerTest
     {
         [TestMethod]
-        public void Index()
+        public void RenderIndexView()
         {
-            // Arrange
             HomeController controller = new HomeController();
-
-            // Act
             ViewResult result = controller.Index() as ViewResult;
+            Assert.IsNotNull(result);
+        }
 
-            // Assert
+        [TestMethod]
+        public void RenderNotFoundView()
+        {
+            HomeController controller = new HomeController();
+            ViewResult result = controller.NotFound() as ViewResult;
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void RenderErrorView()
+        {
+            HomeController controller = new HomeController();
+            ViewResult result = controller.Error() as ViewResult;
             Assert.IsNotNull(result);
         }
     }

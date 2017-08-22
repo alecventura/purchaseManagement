@@ -266,7 +266,6 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\Menu\_Admin.cshtml" />
     <Content Include="Views\Shared\Menu\_Purchase.cshtml" />
-    <Content Include="Views\Shared\Forbidden.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Purchase\Start.cshtml" />
     <Content Include="Views\Purchase\Finish.cshtml" />

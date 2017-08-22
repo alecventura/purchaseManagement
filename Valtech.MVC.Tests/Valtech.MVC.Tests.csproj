@@ -34,6 +34,9 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="SimpleInjector, Version=4.0.8.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.4.0.8\lib\net45\SimpleInjector.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -81,6 +84,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\FakeClasses\FakePaymentMethodApplication.cs" />
+    <Compile Include="Controllers\FakeClasses\FakeProductApplication.cs" />
+    <Compile Include="Controllers\FakeClasses\FakeProductCategoryApplication.cs" />
+    <Compile Include="Controllers\FakeClasses\FakePurchaseApplication.cs" />
+    <Compile Include="Controllers\PurchaseAdminControllerTest.cs" />
+    <Compile Include="Controllers\PurchaseControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
@@ -91,11 +100,20 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Valtech.Application\Valtech.Application.csproj">
+      <Project>{7A966ADF-B869-40F8-9985-01E9C625347C}</Project>
+      <Name>Valtech.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Valtech.Domain\Valtech.Domain.csproj">
+      <Project>{3A11883D-E4A4-45CE-BF29-14FD1D98B611}</Project>
+      <Name>Valtech.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Valtech.MVC\Valtech.MVC.csproj">
       <Project>{D573A790-EEF1-4FCD-8722-BD79A3CD318D}</Project>
       <Name>Valtech.MVC</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
